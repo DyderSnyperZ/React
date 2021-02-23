@@ -1,7 +1,7 @@
 //https://fr.reactjs.org/docs/dom-elements.html
 
 class Counter extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.handleAddOne = this.handleAddOne.bind(this); //permet d'instancier la fonction pour pouvoir l'utiliser dans la class
         this.handleMinusOne = this.handleMinusOne.bind(this);
@@ -10,26 +10,42 @@ class Counter extends React.Component {
             count: 0
         };
     }
-    handleAddOne(){
-        this.setState((prevState) => { //permet de mettre à jour la count dans la vue, prevState est l'état avant la modification, utile pour faire des comparaisons etc.
-            return {
-                 count: prevState.count + 1
-            }
-        })
-    }
-    handleMinusOne(){
-        this.setState((prevState) => { //permet de mettre à jour la count dans la vue, prevState est l'état avant la modification, utile pour faire des comparaisons etc.
-            return {
-                 count: prevState.count - 1
-            }
-        })
-    }
-    handleReset(){
-        this.setState(() => { //permet de mettre à jour la count dans la vue, prevState est l'état avant la modification, utile pour faire des comparaisons etc.
-        return {
-             count: 0
+    componentDidMount() {
+        try {
+            const countData = localStorage.getItem('count');
+            const count = parseInt(countData, 10); //10 = base chiffrement, ici base 10
+            if (!isNaN(count)) 
+                this.setState(() => ({ count }));
+        } catch (error) {
+            console.log(error);
         }
-    })
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.count !== this.state.count) {
+            const json = JSON.stringify(this.state.count);
+            localStorage.setItem('count', json);
+        }
+    }
+    handleAddOne() {
+        this.setState((prevState) => { //permet de mettre à jour la count dans la vue, prevState est l'état avant la modification, utile pour faire des comparaisons etc.
+            return {
+                count: prevState.count + 1
+            }
+        })
+    }
+    handleMinusOne() {
+        this.setState((prevState) => { //permet de mettre à jour la count dans la vue, prevState est l'état avant la modification, utile pour faire des comparaisons etc.
+            return {
+                count: prevState.count - 1
+            }
+        })
+    }
+    handleReset() {
+        this.setState(() => { //permet de mettre à jour la count dans la vue, prevState est l'état avant la modification, utile pour faire des comparaisons etc.
+            return {
+                count: 0
+            }
+        })
     }
     render() {
         return (
