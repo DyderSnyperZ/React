@@ -67,17 +67,18 @@ class IndecisionApp extends React.Component {
         this.setState(() => ({ selecteOption: undefined }));
     }
     render() {
-        let subtitle = 'Ferme la mec';
+        let subtitle = 'Shut up dude';
         return (
             <div>
                 <Header subtitle={subtitle} />
                 <div className="container">
-                    <Actions handlePickOption={this.handlePickOption} options={this.state.options}/>
-                    <Options
+                    <Actions handlePickOption={this.handlePickOption} options={this.state.options} />
+                    <div className="widget"><Options
                         options={this.state.options}
                         handleDeleteOptions={this.handleDeleteOptions}
                         handleDeleteOneOption={this.handleDeleteOneOption} />
-                    <AddOptions handleAddOption={this.handleAddOption} />
+                        <AddOptions handleAddOption={this.handleAddOption} />
+                    </div>
                     <OptionModal selecteOption={this.state.selecteOption} handleClearSelectedOption={this.handleClearSelectedOption} />
                 </div>
             </div>
