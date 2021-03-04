@@ -19,7 +19,9 @@ const setCount = ({randomInt = 1000}) => ({ //force user to set a count
     randomInt: randomInt
 });
 
-const store = createStore((state = { counter: 0 }, action) => {
+// Reducer-----------------------------------------------------
+// NEVER CHANGE STATE OR ACTION
+const store = createStore((state = { counter: 0 }, action) => { 
     switch (action.type) {
         case 'INCREMENT':
             return {
@@ -39,6 +41,7 @@ const store = createStore((state = { counter: 0 }, action) => {
             }
     }
 });
+//-------------------------------------------------------------
 
 store.subscribe(() => { // est appelé à chaque changement de state
     console.log(store.getState());
