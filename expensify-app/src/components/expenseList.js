@@ -13,7 +13,6 @@ const ExpenseListe = (props) => ( //component a render
 );
 
 const mapStateToProps = (state) => { // maps les valeurs de state au variables du template
-    console.log(filteredExpenses(state.expenses, state.filter))
     return {
         expenses: filteredExpenses(state.expenses, state.filter)
     }

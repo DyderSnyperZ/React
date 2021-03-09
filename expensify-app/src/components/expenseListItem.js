@@ -1,10 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { removeState } from '../actions/expenses';
 
-const ExpenseListeItem = ({ description, price, createdAt }) => ( //component a render
-        <li>Description : {description} - Price : {price} - createdAt : {createdAt}</li>
+const ExpenseListeItem = ({ dispatch, id, description, price, createdAt }) => ( //component a render
+        <li >
+                <Link to={`/edit/${id}`}>Description : {description}</Link>
+         - Price : {price} - createdAt : {createdAt}
+        </li>
 );
 
-export default ExpenseListeItem;
+export default connect()(ExpenseListeItem);
 
 
 
