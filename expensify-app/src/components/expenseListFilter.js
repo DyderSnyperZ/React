@@ -19,7 +19,7 @@ class ExpenseListFilter extends React.Component {
         return (
             <div>
                 <input type="text" value={this.props.filter.text} onChange={(e) => {
-                    props.dispatch(setTextFilter(e.target.value)); // set dans le store les data avec le tri qu'on veux
+                    this.props.dispatch(setTextFilter(e.target.value)); // set dans le store les data avec le tri qu'on veux
                 }}></input>
                 <select value={this.props.filter.sortBy} onChange={(e) => {
                     switch (e.target.value) {

@@ -4,7 +4,7 @@ export default (expenses, { text, sortBy, startDate, endDate }) => {
     return expenses.filter((expense) => {
         const createdAtMoment = moment(expense.createdAt)
         const startDateMatch = startDate ? moment(startDate).isSameOrBefore(createdAtMoment):true; //avant ou date expense
-        const endDateMatch = startDate ? moment(endDate).isSameOrAfter(createdAtMoment):true; //après ou date expense
+        const endDateMatch = endDate ? moment(endDate).isSameOrAfter(createdAtMoment):true; //après ou date expense
         const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
 
         return startDateMatch && endDateMatch && textMatch;

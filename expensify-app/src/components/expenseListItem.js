@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeState } from '../actions/expenses';
 
-const ExpenseListeItem = ({ dispatch, id, description, price, createdAt }) => ( //component a render
+export const ExpenseListeItem = ({ dispatch, id, description, price, createdAt }) => ( //component a render
         <li >
                 <Link to={`/edit/${id}`}>Description : {description}</Link>
          - Price : {price} - createdAt : {createdAt}
@@ -11,6 +11,5 @@ const ExpenseListeItem = ({ dispatch, id, description, price, createdAt }) => ( 
 );
 
 export default connect()(ExpenseListeItem);
-
 
 

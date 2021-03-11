@@ -2,8 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
-import 'react-dates/lib/css/_datepicker.css';
-
 export default class ExpenseForm extends React.Component {
     constructor(props){
         super(props); // récupère ce qui est passé dans le parent
@@ -26,7 +24,7 @@ export default class ExpenseForm extends React.Component {
     };
     onPriceChange = (e) => {
         const price = e.target.value;
-        //if (!price && price.match(/^\d{1,}(\.\d{0,2})?$/)) // récupère uniquement les chiffre et décimal si existe
+        if (price && price.match(/^\d{1,}(\.\d{0,2})?$/)) // récupère uniquement les chiffre et décimal si existe
             this.setState(() => ({ price }));
     };
     onDateChange = (createdAt) => {
